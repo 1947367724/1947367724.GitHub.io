@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title></title>
+		<script type="text/javascript">
+			document.addEventListener('plusready', function() {
+				//console.log("所有plus api都应该在此事件发生后调用，否则会出现plus is undefined。")
+
+			});
+		</script>
+		<!-- 引入 jQuery Mobile 样式 -->
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+		<!-- 引入 jQuery 库 -->
+		<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+		<!-- 引入 jQuery Mobile 库 -->
+		<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+		<style type="text/css">
+			.ui-icon-main::after{
+				background:url('img/main.png') no-repeat;
+				background-size: 20px 20px;
+			}
+			.ui-icon-sort::after{
+				background:url('img/sort.png') no-repeat;
+				background-size: 17px 17px;
+				background-position: 2px 2px;
+			}
+			.ui-icon-me::after{
+				background:url('img/me.png') no-repeat;
+				background-size: 20px 20px;
+			}
+			.ui-icon-order::after{
+				background:url('img/order.png') no-repeat;
+				background-size: 20px 20px;
+			}
+			
+			/* 页面高度自适应 */
+			#page{	
+				padding: 0;
+				left : 0 !important;     
+				right : 0; 
+				top : 43px !important;  
+				bottom : 60px !important;  
+				position: absolute !important; 
+				background-color: white;
+			}
+			
+			#sort_page{
+				width: 100%;
+				height: 100%;
+			}
+			
+			#sort{
+				width: 110px;
+				height: 100%;
+				background-color: rgb(246,246,246);
+				position: fixed;
+			}
+			#sort>ul>li{
+				width: 100%;
+			}
+			
+			#sort>ul>li>a{
+				height: 30px;
+				line-height: 30px;
+				font-size: 15px;
+				text-align: center;
+				border: none;
+			}
+			/* 清除分类导航点击效果 并设置自己的点击效果 */
+			#sort .ui-btn-active{
+				background-color: rgb(246,246,246) !important;
+				color: rgb(51,136,204);
+				text-shadow: 0 1px 0 #f3f3f3;
+				border-left: 3px solid rgb(51,136,204);
+				background-color: white !important;
+			}
+			
+			#sort_content{
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				background-color: white;
+				margin-left: 110px;
+			}
+			
+			/* 清除主页和订单导航点击效果 并设置自己的点击效果 */
+			#order_nav .ui-btn-active,#main_nav .ui-btn-active{
+				background-color: rgb(246,246,246) !important;
+				color: rgb(51,136,204);
+				text-shadow: 0 1px 0 #f3f3f3;
+				border-bottom: 1px solid rgb(51,136,204);
+				
+			}
+			.ui-btn:focus{
+				box-shadow: none !important;
+			}
+			
+			#order_nav ul li a,#main_nav ul li a,#nav ul li a{
+				border: none;
+			}
+			
+			#main_nav>ul>li>a{
+				font-size: 16px;
+			}
+			
+			#info{
+				width: 100%;
+				height: 100px;
+				background-color: aquamarine;
+			}
+			#money{
+				width: 100%;
+				height: 120px;
+				background-color: aqua;
+			}
+			#ord{
+				width: 100%;
+				height: 80px;
+				background-color: antiquewhite;
+			}
+			#tool{
+				width: 100%;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<div data-role="page">
+			<div data-role="header" data-position="fixed" data-tap-toggle="false">
+			
+				<h1></h1>
+				<a href="#anylink" data-role="button" data-icon="location">江西财经大学</a>
+				<a href="#anylink" data-role="button" data-icon="comment" data-iconpos="notext">comment</a>
+			</div>
+
+			<div data-role="main" class="ui-content" id="page">
+				
+				<div id="main_page">
+					<div data-role="navbar" id="main_nav">
+					      <ul>
+					        <li><a href="#" class="ui-btn-active">我要接单</a></li>
+					        <li><a href="#">我要下单</a></li>
+					      </ul>
+					</div>
+				</div>
+				<div id="sort_page">
+					<div data-role="navbar" id="sort" >
+						<ul>
+							<li><a href="#" class="ui-btn-active">代取送东西</a></li>
+							<li><a href="#">食堂内打饭</a></li>
+							<li><a href="#">商店买东西</a></li>
+							<li><a href="#">图书馆占座</a></li>
+							<li><a href="#">图书馆还书</a></li>
+						</ul>
+					</div>
+					
+					<div id="sort_content">
+						<div>
+							111
+						</div>
+						<div>222</div>
+						<div>333</div>
+						<div>444</div>
+						<div>555</div>
+					</div>
+				</div>
+				<div id="order_page">
+					<div data-role="navbar" id="order_nav">
+					      <ul>
+					        <li><a href="#" class="ui-btn-active">全部</a></li>
+					        <li><a href="#">待支付</a></li>
+					        <li><a href="#">待接单</a></li>
+							<li><a href="#">待送单</a></li>
+							<li><a href="#">已完成</a></li>
+					      </ul>
+					</div>			
+					<div id="order_list">		
+					
+					</div>
+				</div>
+				<div id="me_page">
+					<div id="info">
+						
+					</div>
+					<div id="money">
+						
+					</div>
+					<div id="ord">
+						
+					</div>
+					<div id="tool">
+						
+					</div>
+				</div>
+			</div>
+				
+			<div data-role="footer" data-position="fixed" data-tap-toggle="false">
+				<div data-role="navbar" id="nav">
+					<ul>
+						<li><a href="#" data-icon="main" class="ui-btn-active">首页</a></li>
+						<li><a href="#" data-icon="sort">分类</a></li>
+						<li><a href="#" data-icon="order">订单</a></li>
+						<li><a href="#" data-icon="me">我的</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+	</body>
+	
+	
+	<script type="text/javascript">
+		$(function(){
+			changePage("#page>div","#nav a");	//底部导航切换
+			changePage("#sort_content>div","#sort a");	// 分类页导航切换
+			
+		});	
+		//封装好的导航链接页面切换函数
+		//page为页面div数组 nav为导航a数组
+		function changePage(page,nav){
+			$(page).hide();
+			$(page).eq(0).show();
+			for(let i=0; i<$(nav).length; i++){
+				$(nav).eq(i).click(function(){
+					$(page).hide();
+					$(page).eq(i).show();
+				})
+			}
+		}
+		
+	</script>
+</html>
