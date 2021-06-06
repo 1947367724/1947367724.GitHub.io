@@ -11,11 +11,11 @@
 			});
 		</script>
 		<!-- 引入 jQuery Mobile 样式 -->
-		<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
 		<!-- 引入 jQuery 库 -->
-		<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+		<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 		<!-- 引入 jQuery Mobile 库 -->
-		<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 		<style type="text/css">
 			.ui-icon-main::after{
 				background:url('img/main.png') no-repeat;
@@ -33,6 +33,25 @@
 			.ui-icon-order::after{
 				background:url('img/order.png') no-repeat;
 				background-size: 20px 20px;
+			}
+			.ui-icon-pay::after{
+				background:url('img/pay.png') no-repeat;
+				background-size: 18px 18px;
+				background-position: 2px 2px;
+			}
+			.ui-icon-receive::after{
+				background:url('img/receive.png') no-repeat;
+				background-size: 24px 24px;
+			}
+			.ui-icon-sent::after{
+				background:url('img/sent.png') no-repeat;
+				background-size: 20px 20px;
+				background-position: 0.5px 2px;
+			}
+			.ui-icon-finish::after{
+				background:url('img/finish.png') no-repeat;
+				background-size: 20px 20px;
+				background-position: 1px 0px;
 			}
 			
 			/* 页面高度自适应 */
@@ -114,15 +133,69 @@
 				width: 100%;
 				height: 120px;
 				background-color: aqua;
+				margin-bottom: -16px;
 			}
 			#ord{
 				width: 100%;
-				height: 80px;
-				background-color: antiquewhite;
+				height: 130px;
+				/* background-color: rgb(241,241,241); */
+				background-color: white;
+				margin-bottom: -22px;
+				
+			}
+			#ord_title{
+				float: left;
+				width: 64px;
+				height: 20px;
+				line-height: 20px;
+				font-size: 16px;
+				color: #333333;
+				font-weight: 600;
+				margin-top: 10px;
+				margin-left: 10px;
+			}
+			#ord_all{
+				float: right;
+				width: 75px;
+				height: 20px;
+				line-height: 20px;
+				/* background-color: #F3F3F3; */
+				font-size: 15px;
+				color: #333333;
+				text-decoration: none;
+				font-weight: 500;
+				margin-top: 10px;
+				margin-right: 5px;
+				
+			}
+			#pay,#receive,#send,#finish{
+				font-size: 15px;
+				width: 45px;
+				background-color: white;
+				border: none;
+				margin-top: 45px;
+				margin-left: 15px;
+				position: absolute;
 			}
 			#tool{
 				width: 100%;
+				border: none;
+				
 			}
+			#tool>ul{
+				box-shadow: none;
+			}
+			#tool>ul>li>a{
+				font-size: 15px;
+				font-weight: 500;
+				height: 25px;
+				line-height: 25px;
+				background-color: white;
+				color: #333333;
+				border-radius: 0px;
+				/* border: none; */
+			}
+			
 		</style>
 	</head>
 	
@@ -136,6 +209,33 @@
 			</div>
 
 			<div data-role="main" class="ui-content" id="page">
+				<div id="me_page">
+					<div id="info">
+						
+					</div>
+					<div id="money">
+						
+					</div>
+					<div id="ord">
+						<p id="ord_title">我的订单</p>
+						<a href="#order_page" id="ord_all">查看全部></a>
+						
+						<a href="#" class="ui-btn ui-icon-pay ui-btn-icon-top" id="pay">待付款</a>
+						<a href="#" class="ui-btn ui-icon-receive ui-btn-icon-top" id="receive" style="margin-left: 100px;">待接单</a>
+						<a href="#" class="ui-btn ui-icon-sent ui-btn-icon-top" id="send" style="margin-left: 190px;">待送单</a>
+						<a href="#" class="ui-btn ui-icon-finish ui-btn-icon-top" id="finish" style="margin-left: 280px;">已完成</a>
+					</div>
+					<div id="tool">
+						<ul data-role="listview" data-inset="true">
+						      <li><a href="new_file.html"><img src="img/address.png" class="ui-li-icon">地址管理</a></li>
+						      <li><a href="#"><img src="img/coupon.png" class="ui-li-icon" style="padding-top: 2px;">优惠卷</a></li>
+						      <li><a href="#"><img src="img/service.png" class="ui-li-icon" style="padding-top: 2px;">联系客服</a></li>
+							  <li><a href="#"><img src="img/help.png" class="ui-li-icon" style="padding-top: 2px;">帮助</a></li>
+							  <li><a href="#"><img src="img/set.png" class="ui-li-icon" style="padding-top: 2px; ">设置</a></li>
+						</ul>
+					</div>
+				</div>
+				
 				
 				<div id="main_page">
 					<div data-role="navbar" id="main_nav">
@@ -176,24 +276,13 @@
 							<li><a href="#">已完成</a></li>
 					      </ul>
 					</div>			
-					<div id="order_list">		
+					<div id="order_list">
 					
 					</div>
 				</div>
-				<div id="me_page">
-					<div id="info">
-						
-					</div>
-					<div id="money">
-						
-					</div>
-					<div id="ord">
-						
-					</div>
-					<div id="tool">
-						
-					</div>
-				</div>
+				
+				
+				
 			</div>
 				
 			<div data-role="footer" data-position="fixed" data-tap-toggle="false">
