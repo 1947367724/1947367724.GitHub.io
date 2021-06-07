@@ -24,7 +24,7 @@
 			.ui-icon-sort::after{
 				background:url('img/sort.png') no-repeat;
 				background-size: 17px 17px;
-				background-position: 2px 2px;
+				background-position: 3px 2px;
 			}
 			.ui-icon-me::after{
 				background:url('img/me.png') no-repeat;
@@ -127,21 +127,76 @@
 			#info{
 				width: 100%;
 				height: 100px;
-				background-color: aquamarine;
+				/* background-color: aquamarine; */
+			}
+			#tx{
+				width: 70px;
+				height: 70px;
+				float: left;
+				margin-top: 15px;
+				margin-left: 2.5%;
+				background-color: #333333;
+			}
+			#tx img{
+				height: 70px;
+				border-radius: 50%;
+				
+			}
+			#name{
+				font-size: 20px;
+				margin-top: 35px;
+				margin-left: 20px;
+				float: left;
+				color: black;
 			}
 			#money{
-				width: 100%;
+				position: relative;
+				width: 95%;
 				height: 120px;
-				background-color: aqua;
-				margin-bottom: -16px;
+				margin-left: 2.5%;
+				background: linear-gradient(to right,rgb(47, 128, 237) , rgb(86, 204, 242));
+				/* margin-top: 5px; */
+				margin-bottom: 5px;
+				border-radius: 10px;
+			}
+			#money_title{
+				position: absolute;
+				font-size: 15px;
+				margin-left: 15px;
+				margin-top: 15px;
+				color: #A1EBFF;
+				text-shadow: 0px 1px 1px rgb(35,170,250);
+			}
+			#money_num{
+				position: absolute;
+				color: white;
+				text-shadow: 0px 1px 1px rgb(35,170,250);
+				font-size: 30px;
+				margin-top: 55px;
+				margin-left: 15px;
+			}
+			#money_buy,#money_cash{
+				position: absolute;
+				background-color: white;
+				color: rgb(35,170,250);
+				text-shadow: 0px 1px 1px white;
+				font-size: 16px;
+				width: 60px;
+				text-align: center;
+				height: 35px;
+				line-height: 35px;
+				border-radius: 25px 0 0 25px;
+				right: 1px;
+			}
+			#money_cash{
+				top: 50px;
 			}
 			#ord{
+				position: relative;
 				width: 100%;
 				height: 130px;
-				/* background-color: rgb(241,241,241); */
 				background-color: white;
 				margin-bottom: -22px;
-				
 			}
 			#ord_title{
 				float: left;
@@ -159,7 +214,6 @@
 				width: 75px;
 				height: 20px;
 				line-height: 20px;
-				/* background-color: #F3F3F3; */
 				font-size: 15px;
 				color: #333333;
 				text-decoration: none;
@@ -169,13 +223,13 @@
 				
 			}
 			#pay,#receive,#send,#finish{
+				position: absolute;
 				font-size: 15px;
 				width: 45px;
 				background-color: white;
 				border: none;
-				margin-top: 45px;
-				margin-left: 15px;
-				position: absolute;
+				top: 35px;
+				left: 5%;
 			}
 			#tool{
 				width: 100%;
@@ -193,7 +247,6 @@
 				background-color: white;
 				color: #333333;
 				border-radius: 0px;
-				/* border: none; */
 			}
 			
 		</style>
@@ -209,32 +262,7 @@
 			</div>
 
 			<div data-role="main" class="ui-content" id="page">
-				<div id="me_page">
-					<div id="info">
-						
-					</div>
-					<div id="money">
-						
-					</div>
-					<div id="ord">
-						<p id="ord_title">我的订单</p>
-						<a href="#order_page" id="ord_all">查看全部></a>
-						
-						<a href="#" class="ui-btn ui-icon-pay ui-btn-icon-top" id="pay">待付款</a>
-						<a href="#" class="ui-btn ui-icon-receive ui-btn-icon-top" id="receive" style="margin-left: 100px;">待接单</a>
-						<a href="#" class="ui-btn ui-icon-sent ui-btn-icon-top" id="send" style="margin-left: 190px;">待送单</a>
-						<a href="#" class="ui-btn ui-icon-finish ui-btn-icon-top" id="finish" style="margin-left: 280px;">已完成</a>
-					</div>
-					<div id="tool">
-						<ul data-role="listview" data-inset="true">
-						      <li><a href="new_file.html"><img src="img/address.png" class="ui-li-icon">地址管理</a></li>
-						      <li><a href="#"><img src="img/coupon.png" class="ui-li-icon" style="padding-top: 2px;">优惠卷</a></li>
-						      <li><a href="#"><img src="img/service.png" class="ui-li-icon" style="padding-top: 2px;">联系客服</a></li>
-							  <li><a href="#"><img src="img/help.png" class="ui-li-icon" style="padding-top: 2px;">帮助</a></li>
-							  <li><a href="#"><img src="img/set.png" class="ui-li-icon" style="padding-top: 2px; ">设置</a></li>
-						</ul>
-					</div>
-				</div>
+				
 				
 				
 				<div id="main_page">
@@ -270,7 +298,7 @@
 					<div data-role="navbar" id="order_nav">
 					      <ul>
 					        <li><a href="#" class="ui-btn-active">全部</a></li>
-					        <li><a href="#">待支付</a></li>
+					        <li><a href="#">待付款</a></li>
 					        <li><a href="#">待接单</a></li>
 							<li><a href="#">待送单</a></li>
 							<li><a href="#">已完成</a></li>
@@ -280,7 +308,45 @@
 					
 					</div>
 				</div>
-				
+				<div id="me_page">
+					<div id="info">
+						<div id="tx">
+							<img src="img/tx.jpg">
+						</div>
+						<p id="name">
+							admin123
+						</p>
+					</div>
+					<div id="money">
+						<p id="money_title">
+							钱包余额(元)
+						</p>
+						<p id="money_num">0.00</p>
+						<p id="money_buy">
+							充值
+						</p>
+						<p id="money_cash">
+							提现
+						</p>
+					</div>
+					<div id="ord">
+						<p id="ord_title">我的订单</p>
+						<a href="#order_page" id="ord_all">查看全部></a>
+						<a href="#" class="ui-btn ui-icon-pay ui-btn-icon-top" id="pay">待付款</a>
+						<a href="#" class="ui-btn ui-icon-receive ui-btn-icon-top" id="receive" style="left: 28%;">待接单</a>
+						<a href="#" class="ui-btn ui-icon-sent ui-btn-icon-top" id="send" style="left: 51%;">待送单</a>
+						<a href="#" class="ui-btn ui-icon-finish ui-btn-icon-top" id="finish" style="left: 74%">已完成</a>
+					</div>
+					<div id="tool">
+						<ul data-role="listview" data-inset="true">
+						      <li><a href="new_file.html"><img src="img/address.png" class="ui-li-icon">地址管理</a></li>
+						      <li><a href="#"><img src="img/coupon.png" class="ui-li-icon" style="padding-top: 2px;">优惠卷</a></li>
+						      <li><a href="#"><img src="img/service.png" class="ui-li-icon" style="padding-top: 2px;">联系客服</a></li>
+							  <li><a href="#"><img src="img/help.png" class="ui-li-icon" style="padding-top: 2px;">帮助</a></li>
+							  <li><a href="#"><img src="img/set.png" class="ui-li-icon" style="padding-top: 2px; ">设置</a></li>
+						</ul>
+					</div>
+				</div>
 				
 				
 			</div>
