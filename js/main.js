@@ -50,7 +50,8 @@ $(function() {
 	add_recommand_order();	// 添加推荐订单信息
 	pickUpOrder();	// 推荐订单的信息提交和修改以及分类订单的信息提交和修改
 	clickOrderInfo();	// 点击通过模态框查看订单状态信息
-	getUserOrder(); // 获取用户的订单信息 并判断分类订单和用户订单列表是否为空
+	getUserOrder(); // 获取用户的订单信息
+	jugeOrderList();//判断各订单列表是否为空 空则显示logo图片
 	classifyUserOrder(); // 对用户订单进行分类
 	takeApartClassfiy();  // 分隔分类导航订单列表 使其与导航对应
 	finishOrder();	// 完成送单任务
@@ -420,6 +421,7 @@ function clickOrderInfo(){
 	}
 }
 
+// 获取用户的订单信息
 function getUserOrder(){
 	if(jugeLogin()){
 		var order_list = JSON.parse(localStorage.getItem(username)).orderlist;
@@ -433,18 +435,28 @@ function getUserOrder(){
 				}
 			}
 		}
-		if($("#order_list>ul>li").length){
-			$("#order_page>div").eq(2).hide();
-		}
-		else{
-			$("#order_page>div").eq(2).show();
-		}
-		if($("#classify_content>ul>li").length){
-			$("#classify_content>span").eq(0).hide();
-		}
-		else{
-			$("#classify_content>span").eq(0).show();
-		}
+	}
+}
+
+// 判断各订单列表是否为空 空则显示logo图片
+function jugeOrderList(){
+	if($("#order_list>ul>li").length){
+		$("#order_page>div").eq(2).hide();
+	}
+	else{
+		$("#order_page>div").eq(2).show();
+	}
+	if($("#classify_content>ul>li").length){
+		$("#classify_content>span").eq(0).hide();
+	}
+	else{
+		$("#classify_content>span").eq(0).show();
+	}
+	if($("#recommad_order_list>ul>li").length){
+		$("#recommad_order_list>span").eq(0).hide();
+	}
+	else{
+		$("#recommad_order_list>span").eq(0).show();
 	}
 }
 
