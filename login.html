@@ -3,15 +3,15 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title></title>
+    <title>登录页</title>
     <!-- 引入 jQuery Mobile 样式 -->
     <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
     <!-- 引入 jQuery 库 -->
-    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="js/jquery-1.11.3.min.js"></script>
     <!-- 引入 jQuery Mobile 库 -->
-    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script src="js/jquery.mobile-1.4.5.min.js"></script>
 	<style type="text/css">
-		#account,#passwd{
+		#account,#passwd{ 
 			height: 50px;
 			width: 100%;
 			
@@ -21,7 +21,7 @@
 			margin-top: 20px;
 			color: white;
 			background-color: rgb(66,177,255);
-			text-shadow: 1px 1px 1px #333;;
+			text-shadow: 1px 1px 1px #333;
 			
 		}
 		
@@ -63,9 +63,11 @@
 		var user = acc.value;
 		var passwd = pwd.value;
 		
+		
 		if(localStorage.getItem(user)){
-			if(localStorage.getItem(user)==passwd){
-				var url = "main.html" + "?" + "username="+ encodeURI(user) + "&password=" + encodeURI(passwd);
+			var user_info = JSON.parse(localStorage.getItem(user));
+			if(user_info.passwd==passwd){
+				var url = "main.html" + "?" + "username="+ encodeURI(user) + "&password=" + encodeURI(passwd) + "&operate=none";
 				window.location.href = url;
 			}
 			else if(passwd==""){

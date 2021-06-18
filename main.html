@@ -3,320 +3,305 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title></title>
-		<script type="text/javascript">
-			document.addEventListener('plusready', function() {
-				//console.log("所有plus api都应该在此事件发生后调用，否则会出现plus is undefined。")
-
-			});
-		</script>
+		<title>主页</title>
 		<!-- 引入 jQuery Mobile 样式 -->
 		<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
 		<!-- 引入 jQuery 库 -->
-		<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+		<script src="js/jquery-1.11.3.min.js"></script>
 		<!-- 引入 jQuery Mobile 库 -->
-		<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-		<style type="text/css">
-			.ui-icon-main::after{
-				background:url('img/main.png') no-repeat;
-				background-size: 20px 20px;
-			}
-			.ui-icon-sort::after{
-				background:url('img/sort.png') no-repeat;
-				background-size: 17px 17px;
-				background-position: 3px 2px;
-			}
-			.ui-icon-me::after{
-				background:url('img/me.png') no-repeat;
-				background-size: 20px 20px;
-			}
-			.ui-icon-order::after{
-				background:url('img/order.png') no-repeat;
-				background-size: 20px 20px;
-			}
-			.ui-icon-pay::after{
-				background:url('img/pay.png') no-repeat;
-				background-size: 18px 18px;
-				background-position: 2px 2px;
-			}
-			.ui-icon-receive::after{
-				background:url('img/receive.png') no-repeat;
-				background-size: 24px 24px;
-			}
-			.ui-icon-sent::after{
-				background:url('img/sent.png') no-repeat;
-				background-size: 20px 20px;
-				background-position: 0.5px 2px;
-			}
-			.ui-icon-finish::after{
-				background:url('img/finish.png') no-repeat;
-				background-size: 20px 20px;
-				background-position: 1px 0px;
-			}
-			
-			/* 页面高度自适应 */
-			#page{	
-				padding: 0;
-				left : 0 !important;     
-				right : 0; 
-				top : 43px !important;  
-				bottom : 60px !important;  
-				position: absolute !important; 
-				background-color: white;
-			}
-			
-			#sort_page{
-				width: 100%;
-				height: 100%;
-			}
-			
-			#sort{
-				width: 110px;
-				height: 100%;
-				background-color: rgb(246,246,246);
-				position: fixed;
-			}
-			#sort>ul>li{
-				width: 100%;
-			}
-			
-			#sort>ul>li>a{
-				height: 30px;
-				line-height: 30px;
-				font-size: 15px;
-				text-align: center;
-				border: none;
-			}
-			/* 清除分类导航点击效果 并设置自己的点击效果 */
-			#sort .ui-btn-active{
-				background-color: rgb(246,246,246) !important;
-				color: rgb(51,136,204);
-				text-shadow: 0 1px 0 #f3f3f3;
-				border-left: 3px solid rgb(51,136,204);
-				background-color: white !important;
-			}
-			
-			#sort_content{
-				width: 100%;
-				height: 100%;
-				position: absolute;
-				background-color: white;
-				margin-left: 110px;
-			}
-			
-			/* 清除主页和订单导航点击效果 并设置自己的点击效果 */
-			#order_nav .ui-btn-active,#main_nav .ui-btn-active{
-				background-color: rgb(246,246,246) !important;
-				color: rgb(51,136,204);
-				text-shadow: 0 1px 0 #f3f3f3;
-				border-bottom: 1px solid rgb(51,136,204);
-				
-			}
-			.ui-btn:focus{
-				box-shadow: none !important;
-			}
-			
-			#order_nav ul li a,#main_nav ul li a,#nav ul li a{
-				border: none;
-			}
-			
-			#main_nav>ul>li>a{
-				font-size: 16px;
-			}
-			
-			#info{
-				width: 100%;
-				height: 100px;
-				/* background-color: aquamarine; */
-			}
-			#tx{
-				width: 70px;
-				height: 70px;
-				float: left;
-				margin-top: 15px;
-				margin-left: 2.5%;
-				background-color: #333333;
-			}
-			#tx img{
-				height: 70px;
-				border-radius: 50%;
-				
-			}
-			#name{
-				font-size: 20px;
-				margin-top: 35px;
-				margin-left: 20px;
-				float: left;
-				color: black;
-			}
-			#money{
-				position: relative;
-				width: 95%;
-				height: 120px;
-				margin-left: 2.5%;
-				background: linear-gradient(to right,rgb(47, 128, 237) , rgb(86, 204, 242));
-				/* margin-top: 5px; */
-				margin-bottom: 5px;
-				border-radius: 10px;
-			}
-			#money_title{
-				position: absolute;
-				font-size: 15px;
-				margin-left: 15px;
-				margin-top: 15px;
-				color: #A1EBFF;
-				text-shadow: 0px 1px 1px rgb(35,170,250);
-			}
-			#money_num{
-				position: absolute;
-				color: white;
-				text-shadow: 0px 1px 1px rgb(35,170,250);
-				font-size: 30px;
-				margin-top: 55px;
-				margin-left: 15px;
-			}
-			#money_buy,#money_cash{
-				position: absolute;
-				background-color: white;
-				color: rgb(35,170,250);
-				text-shadow: 0px 1px 1px white;
-				font-size: 16px;
-				width: 60px;
-				text-align: center;
-				height: 35px;
-				line-height: 35px;
-				border-radius: 25px 0 0 25px;
-				right: 1px;
-			}
-			#money_cash{
-				top: 50px;
-			}
-			#ord{
-				position: relative;
-				width: 100%;
-				height: 130px;
-				background-color: white;
-				margin-bottom: -22px;
-			}
-			#ord_title{
-				float: left;
-				width: 64px;
-				height: 20px;
-				line-height: 20px;
-				font-size: 16px;
-				color: #333333;
-				font-weight: 600;
-				margin-top: 10px;
-				margin-left: 10px;
-			}
-			#ord_all{
-				float: right;
-				width: 75px;
-				height: 20px;
-				line-height: 20px;
-				font-size: 15px;
-				color: #333333;
-				text-decoration: none;
-				font-weight: 500;
-				margin-top: 10px;
-				margin-right: 5px;
-				
-			}
-			#pay,#receive,#send,#finish{
-				position: absolute;
-				font-size: 15px;
-				width: 45px;
-				background-color: white;
-				border: none;
-				top: 35px;
-				left: 5%;
-			}
-			#tool{
-				width: 100%;
-				border: none;
-				
-			}
-			#tool>ul{
-				box-shadow: none;
-			}
-			#tool>ul>li>a{
-				font-size: 15px;
-				font-weight: 500;
-				height: 25px;
-				line-height: 25px;
-				background-color: white;
-				color: #333333;
-				border-radius: 0px;
-			}
-			
-		</style>
+		<script src="js/jquery.mobile-1.4.5.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/main.css" />
 	</head>
-	
+
 	<body>
-		<div data-role="page">
+		<!-- 遮罩 -->
+		<div class="mask">
+			<!-- 遮罩层部分，不设置内容 -->
+		</div>
+		
+		<!-- 模态框 -->
+		<div class="modal">
+			<!-- 下单界面点击填写信息框 -->
+			<div class="pick_up">
+				<h2>取件信息</h2>
+				<input type="text" class="address" placeholder="取件地址(请填写校内地址,例如:菜鸟驿站)" />	
+				<input type="text" class="name" placeholder="姓名(没有具体联系人填无)"/ >			
+				<input type="text" maxlength=11 class="phone" placeholder="电话(没有具体联系电话填无)" />				
+				<button type="button">确认</button>
+			</div>
+			<!-- 推荐订单界面点击填写信息 -->
+			<div class="recommand_order_info">
+				<p class="recommand_order_info_title">
+					订单其他信息
+				</p>
+				<div class="recommand_order_info_content">
+					<ul>
+						<li>
+							<p>订单号：<span>订单号</span></p>
+						</li>
+						<li>
+							<p>取件时间：<span>取件时间</span></p>
+						</li>
+						<li>
+							<p>备注：<span>备注信息</span></p>
+						</li>
+					</ul>
+					<button type="button">完成</button>
+				</div>
+			</div>
+		</div>
+		
+		<!-- 主页内容 -->
+		<div data-role="page" id="index">
+			<!-- 页面头部 固定不变 位置固定 格式固定-->
 			<div data-role="header" data-position="fixed" data-tap-toggle="false">
-			
 				<h1></h1>
-				<a href="#anylink" data-role="button" data-icon="location">江西财经大学</a>
-				<a href="#anylink" data-role="button" data-icon="comment" data-iconpos="notext">comment</a>
+				<a href="#" data-role="button" data-icon="location" id="school">江西财经大学</a>
+				<a href="#" data-role="button" data-icon="comment" data-iconpos="notext" id="chat">comment</a>
 			</div>
 
+			<!-- 页面主要内容部分 页面高度自适应 四个分页面分别对应底部四个导航-->
 			<div data-role="main" class="ui-content" id="page">
-				
-				
-				
+				<!-- 第一页首页部分 -->
 				<div id="main_page">
+					<!-- 首页接单、下单导航 -->
 					<div data-role="navbar" id="main_nav">
-					      <ul>
-					        <li><a href="#" class="ui-btn-active">我要接单</a></li>
-					        <li><a href="#">我要下单</a></li>
-					      </ul>
+						<ul>
+							<li><a href="#" class="ui-btn-active">我要接单</a></li>
+							<li><a href="#">我要下单</a></li>
+						</ul>
+					</div>
+					<!-- 首页接单、下单导航对应的接单下单页面 -->
+					<div id="main_content">
+						<!-- 首页接单导航对应的接单页面 -->
+						<div id="receive_order">
+							<!-- 广告轮播图 -->
+							<div id="main_img">
+								<img src="img/01.jpg">
+								<img src="img/02.jpg">
+								<img src="img/03.jpg">
+								<img src="img/04.jpg">
+								<div id="spot">
+									<span></span>
+									<span></span>
+									<span></span>
+									<span></span>
+								</div>
+							</div>
+							<!-- 推荐订单 -->
+							<div id="recommand_order">
+								<p id="recommand_title">-推荐订单-</p>
+								<!-- 推荐列表,列表内容通过js遍历localstorage添加列表数据 -->
+								<div id="recommand_order_list">
+									<ul data-role="listview" data-icon="false">
+									</ul>
+									<span class="order_logo" style="top: 60%;">
+										<div><img src="img/ord.png" style="height: 80px;"></div>
+										暂无推荐订单
+									</span>
+								</div>
+							</div>
+						</div>
+						<!-- 首页下单导航对应的下单页面 -->
+						<div id="place_order">
+							<!-- 下单页面对应的可下单类型导航 -->
+							<div data-role="navbar" id="place_order_nav">
+								<ul>
+									<li><a href="#" class="ui-btn-active">帮取送</a></li>
+									<li><a href="#">帮打饭</a></li>
+									<li><a href="#">帮买物</a></li>
+									<li><a href="#">帮借书</a></li>
+									<li><a href="#">帮还书</a></li>
+								</ul>
+							</div>
+							<!-- 下单信息的填写 -->
+							<div id="place_order_content">
+								<div>
+									<div class="delivery_content">
+										<input class="delivery_input" type="" placeholder="要取什么东西？如：快递" />										
+									</div>
+									<div class="delivery_header">
+										<h3>从哪里取货？</h3>
+										<p>点击完善填写取货地址</p>
+										<div class="common_address">
+											<img src="img/common_address.png" style="height: 40px;">
+											<span>常用</span>
+										</div>
+									</div>
+									<div class="delivery_footer">
+										<h3>要送到哪里？</h3>
+										<p>点击完善填写收货地址</p>
+										<div class="common_address">
+											<img src="img/common_address.png" style="height: 40px;">
+											<span>常用</span>
+										</div>
+									</div>
+									<div class="delivery_but">
+										<button type="button">立即下单</button>
+									</div>
+								</div>
+								<div>
+									<div class="delivery_content">
+										<input class="delivery_input" type="" placeholder="想吃点什么？如：青椒炒肉" style="margin-top: 5px;"/>										
+									</div>
+									
+									<div class="delivery_header">
+										<h3>在哪个食堂饭店打饭？</h3>
+										<p>点击完善填写打饭地址</p>
+										<div class="common_address">
+											<img src="img/common_address.png" style="height: 40px;">
+											<span>常用</span>
+										</div>
+									</div>
+									<div class="delivery_footer">
+										<h3>要送到哪里？</h3>
+										<p>点击完善填写收货地址</p>
+										<div class="common_address">
+											<img src="img/common_address.png" style="height: 40px;">
+											<span>常用</span>
+										</div>
+									</div>
+									<div class="delivery_but">
+										<button type="button">立即下单</button>
+									</div>
+								</div>							
+								<div>
+									<div class="delivery_content">
+										<input class="delivery_input" type="" placeholder="想买点什么？如：百事可乐" style="margin-top: 5px;"/>
+									</div>
+									
+									<div class="delivery_header">
+										<h3>在哪个商店买东西？</h3>
+										<p>点击完善填写商店名称</p>
+										<div class="common_address">
+											<img src="img/common_address.png" style="height: 40px;">
+											<span>常用</span>
+										</div>
+									</div>
+									<div class="delivery_footer">
+										<h3>要送到哪里？</h3>
+										<p>点击完善填写收货地址</p>
+										<div class="common_address">
+											<img src="img/common_address.png" style="height: 40px;">
+											<span>常用</span>
+										</div>
+									</div>
+									<div class="delivery_but">
+										<button type="button">立即下单</button>
+									</div>
+								</div>
+								<div>
+									<div class="delivery_content">
+										<input class="delivery_input" type="" placeholder="要借哪些书？如：数据结构" style="margin-top: 5px;"/>
+									</div>
+									
+									<div class="delivery_header">
+										<h3>在哪个图书馆借书？</h3>
+										<p>点击完善填写图书馆名称</p>
+										<div class="common_address">
+											<img src="img/common_address.png" style="height: 40px;">
+											<span>常用</span>
+										</div>
+									</div>
+									<div class="delivery_footer">
+										<h3>要把书送到哪？</h3>
+										<p>点击完善填写收货地址</p>
+										<div class="common_address">
+											<img src="img/common_address.png" style="height: 40px;">
+											<span>常用</span>
+										</div>
+									</div>
+									<div class="delivery_but">
+										<button type="button">立即下单</button>
+									</div>
+								</div>
+								<div>
+									<div class="delivery_content">
+										<input class="delivery_input" type="" placeholder="所还书籍信息? 如：5本,略重" style="margin-top: 5px;"/>
+									</div>
+									
+									<div class="delivery_header">
+										<h3>在哪里取书？</h3>
+										<p>点击完善填写取货地址</p>
+										<div class="common_address">
+											<img src="img/common_address.png" style="height: 40px;">
+											<span>常用</span>
+										</div>
+									</div>
+									<div class="delivery_footer">
+										<h3>把书还在哪个图书馆？</h3>
+										<p>点击完善填写图书馆名称</p>	
+										<div class="common_address">
+											<img src="img/common_address.png" style="height: 40px;">
+											<span>常用</span>
+										</div>
+									</div>
+									<div class="delivery_but">
+										<button type="button">立即下单</button>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
-				<div id="sort_page">
-					<div data-role="navbar" id="sort" >
+				<!-- 第二页分类订单部分 -->
+				<div id="classify_page">
+					<!-- 分类订单导航 -->
+					<div data-role="navbar" id="classify">
 						<ul>
-							<li><a href="#" class="ui-btn-active">代取送东西</a></li>
-							<li><a href="#">食堂内打饭</a></li>
+							<li><a href="#" class="ui-btn-active">所有订单</a></li>
+							<li><a href="#">代取送东西</a></li>
+							<li><a href="#">食堂帮打饭</a></li>
 							<li><a href="#">商店买东西</a></li>
-							<li><a href="#">图书馆占座</a></li>
+							<li><a href="#">图书馆借书</a></li>
 							<li><a href="#">图书馆还书</a></li>
 						</ul>
 					</div>
-					
-					<div id="sort_content">
-						<div>
-							111
-						</div>
-						<div>222</div>
-						<div>333</div>
-						<div>444</div>
-						<div>555</div>
+					<!-- 分类订单内容 原理和上面推荐订单一样 多了一步导航筛选 -->
+					<div id="classify_content">
+						<ul data-role="listview" data-icon="false" style="margin-top: 2%;">
+						</ul>
+						
+						<span class="order_logo" style="left: 15%; width: 50%;">
+							<div><img src="img/ord.png" style="height: 80px;"></div>
+							暂无该类订单
+						</span>
 					</div>
 				</div>
+				<!-- 第三页订单状态详情页面 -->
 				<div id="order_page">
+				<!-- 主页部分 -->
+					<!-- 第三页订单状态页面导航 -->
 					<div data-role="navbar" id="order_nav">
-					      <ul>
-					        <li><a href="#" class="ui-btn-active">全部</a></li>
-					        <li><a href="#">待付款</a></li>
-					        <li><a href="#">待接单</a></li>
+					<!-- 第三页订单状态内容部分 数据导入原理和分类订单相似 -->
+						<ul>
+							<li><a href="#" class="ui-btn-active">全部</a></li>
+							<li><a href="#">待付款</a></li>
+							<li><a href="#">待接单</a></li>
 							<li><a href="#">待送单</a></li>
 							<li><a href="#">已完成</a></li>
-					      </ul>
-					</div>			
+						</ul>
+					</div>
 					<div id="order_list">
-					
+						<ul data-role="listview" data-icon="false">
+						</ul>
+					</div>
+					<div class="order_logo">
+						<div><img src="img/ord.png" style="height: 80px;"></div>
+						暂无订单数据
 					</div>
 				</div>
 				<div id="me_page">
+					<!-- 个人信息页面 -->
 					<div id="info">
 						<div id="tx">
-							<img src="img/tx.jpg">
+							<img src="img/tx1.jpg">
 						</div>
-						<p id="name">
-							admin123
+						<p id="login">
+							登录/注册
 						</p>
 					</div>
+					<!-- 个人钱包页面 -->
 					<div id="money">
 						<p id="money_title">
 							钱包余额(元)
@@ -329,33 +314,41 @@
 							提现
 						</p>
 					</div>
+					<!-- 个人订单状态页面 -->
 					<div id="ord">
 						<p id="ord_title">我的订单</p>
-						<a href="#order_page" id="ord_all">查看全部></a>
+						<p href="#" id="ord_all">查看全部></p>
 						<a href="#" class="ui-btn ui-icon-pay ui-btn-icon-top" id="pay">待付款</a>
-						<a href="#" class="ui-btn ui-icon-receive ui-btn-icon-top" id="receive" style="left: 28%;">待接单</a>
+						<a href="#" class="ui-btn ui-icon-receive ui-btn-icon-top" id="receive"
+							style="left: 28%;">待接单</a>
 						<a href="#" class="ui-btn ui-icon-sent ui-btn-icon-top" id="send" style="left: 51%;">待送单</a>
 						<a href="#" class="ui-btn ui-icon-finish ui-btn-icon-top" id="finish" style="left: 74%">已完成</a>
 					</div>
+					<!-- 个人订单工具页面 -->
 					<div id="tool">
 						<ul data-role="listview" data-inset="true">
-						      <li><a href="new_file.html"><img src="img/address.png" class="ui-li-icon">地址管理</a></li>
-						      <li><a href="#"><img src="img/coupon.png" class="ui-li-icon" style="padding-top: 2px;">优惠卷</a></li>
-						      <li><a href="#"><img src="img/service.png" class="ui-li-icon" style="padding-top: 2px;">联系客服</a></li>
-							  <li><a href="#"><img src="img/help.png" class="ui-li-icon" style="padding-top: 2px;">帮助</a></li>
-							  <li><a href="#"><img src="img/set.png" class="ui-li-icon" style="padding-top: 2px; ">设置</a></li>
+							<li><a href="#"><img src="img/地址.png" class="ui-li-icon">地址管理</a></li>
+							<li><a href="#"><img src="img/我的优惠卷.png" class="ui-li-icon"
+										style="padding-top: 2px;">优惠卷</a></li>
+							<li><a href="#"><img src="img/客服.png" class="ui-li-icon"
+										style="padding-top: 2px;">联系客服</a></li>
+							<li><a href="#"><img src="img/帮助.png" class="ui-li-icon" style="padding-top: 2px;">帮助</a>
+							</li>
+							<li><a href="#"><img src="img/设置.png" class="ui-li-icon" style="padding-top: 2px; ">设置</a>
+							</li>
 						</ul>
+						<button type="button" id="cancel">退出登录</button>
 					</div>
 				</div>
-				
-				
 			</div>
-				
+			
+			
+			<!-- 页面底部 固定不变 位置固定 格式固定-->
 			<div data-role="footer" data-position="fixed" data-tap-toggle="false">
 				<div data-role="navbar" id="nav">
 					<ul>
 						<li><a href="#" data-icon="main" class="ui-btn-active">首页</a></li>
-						<li><a href="#" data-icon="sort">分类</a></li>
+						<li><a href="#" data-icon="classify">分类</a></li>
 						<li><a href="#" data-icon="order">订单</a></li>
 						<li><a href="#" data-icon="me">我的</a></li>
 					</ul>
@@ -363,27 +356,7 @@
 			</div>
 		</div>
 		
-	</body>
-	
-	
-	<script type="text/javascript">
-		$(function(){
-			changePage("#page>div","#nav a");	//底部导航切换
-			changePage("#sort_content>div","#sort a");	// 分类页导航切换
-			
-		});	
-		//封装好的导航链接页面切换函数
-		//page为页面div数组 nav为导航a数组
-		function changePage(page,nav){
-			$(page).hide();
-			$(page).eq(0).show();
-			for(let i=0; i<$(nav).length; i++){
-				$(nav).eq(i).click(function(){
-					$(page).hide();
-					$(page).eq(i).show();
-				})
-			}
-		}
 		
-	</script>
+	</body>
+	<script src="js/main.js" type="text/javascript" charset="utf-8"></script>
 </html>
