@@ -452,11 +452,11 @@ function jugeOrderList(){
 	else{
 		$("#classify_content>span").eq(0).show();
 	}
-	if($("#recommad_order_list>ul>li").length){
-		$("#recommad_order_list>span").eq(0).hide();
+	if($("#recommand_order_list>ul>li").length){
+		$("#recommand_order_list>span").eq(0).hide();
 	}
 	else{
-		$("#recommad_order_list>span").eq(0).show();
+		$("#recommand_order_list>span").eq(0).show();
 	}
 }
 
